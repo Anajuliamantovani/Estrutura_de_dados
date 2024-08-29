@@ -1,0 +1,3 @@
+D:/Dowloads/EX/Exercicio de Pilhas/paraPilhas/cmake-build-debug/CMakeFiles/paraPilhas.dir
+D:/Dowloads/EX/Exercicio de Pilhas/paraPilhas/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Dowloads/EX/Exercicio de Pilhas/paraPilhas/cmake-build-debug/CMakeFiles/rebuild_cache.dir
