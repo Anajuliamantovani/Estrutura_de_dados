@@ -3,7 +3,7 @@
 #include "informacoes.h"
 
 int Id = 0;
-
+//Hoje é domingo pé de cachimbo
 int main()
 {
     int opcao;
