@@ -3,6 +3,8 @@
 #include "informacoes.h"
 
 int Id = 0;
+char opcao02[30];
+
 //Hoje é domingo pé de cachimbo
 
 //Maqueicou
@@ -19,7 +21,8 @@ int main()
     printf("\n 1. Adicionar \n 2. Excluir \n 3. Alterar \n 4. Imprimir\n 5. Imprimir Todos\n 6. Ordenar\n 7. Sair\n ");
     printf("=======================================================================\n");
     printf("Digite sua opcao: ");
-    scanf("%d", &opcao);
+    fgets(opcao02, 30, stdin);
+    sscanf(opcao02, "%d", &opcao);
 
     switch (opcao)
     {
@@ -39,8 +42,7 @@ int main()
 
         case 4:
             printf("Qual usuario deseja visualizar ? \n");
-            scanf("%d", &escolha);
-            print(escolha);
+            print(Id);
             break;
         case 5:
             PrintAll(Id);
