@@ -8,6 +8,7 @@ int Id = 0;
 //Maqueicou
 
 //ado ado quem tiver lendo é viado
+//birrento
 int main()
 {
     int opcao;
