@@ -6,6 +6,8 @@ int Id = 0;
 //Hoje é domingo pé de cachimbo
 
 //Maqueicou
+
+//ado ado quem tiver lendo é viado
 int main()
 {
     int opcao;
