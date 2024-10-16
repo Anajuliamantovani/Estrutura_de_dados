@@ -18,25 +18,29 @@ User Usuario [TAM];
 int Add (int Id)
 {
 
-    int oi;
+
 
     printf("CPF:");
-    scanf("%d", &oi);
     fgets(Usuario[Id].CPF, 30, stdin);
     Usuario[Id].CPF[strcspn(Usuario[Id].CPF,"\n")] = '\0';
+
 
 
     if(Id != 0)
     {
         for (int i = 0; i < Id ; i++)
         {
-            if(strcmp(Usuario[Id-1].CPF, Usuario[Id].CPF) == 0)
+            if(i != Id)
             {
-                printf("CPF ja Cadastrado.");
-                return Id;
+                if(strcmp(Usuario[i].CPF, Usuario[Id].CPF) == 0)
+                {
+                    printf("CPF ja Cadastrado.");
+                    return Id;
+                }
             }
         }
     }
+
 
     printf("Preencha as informacoes a seguir:\n");
 
@@ -47,10 +51,6 @@ int Add (int Id)
     printf("Endereco:");
     fgets(Usuario[Id].Adress, 100, stdin);
     Usuario[Id].Adress[strcspn(Usuario[Id].Adress,"\n")] = '\0';
-
-    printf("CPF:");
-    fgets(Usuario[Id].CPF, 30, stdin);
-    Usuario[Id].CPF[strcspn(Usuario[Id].CPF,"\n")] = '\0';
 
     printf("Telefone:");
     fgets(Usuario[Id].Telefone, 30, stdin);
@@ -93,6 +93,42 @@ int edit()
 
 int print(int Id)
 {
+
+    printf("\n");
+
+    int escolha = 1000;
+
+    char cpfPesquisa[30];
+
+    printf("CPF:");
+    fgets(cpfPesquisa, 30, stdin);
+    cpfPesquisa[strcspn(cpfPesquisa,"\n")] = '\0';
+
+
+    for (int i = 0; i < Id; ++i)
+    {
+
+        if(strcmp(Usuario[i].CPF, cpfPesquisa) == 0)
+        {
+           escolha = i;
+        }
+
+    }
+    if(escolha == 1000)
+    {
+        printf("CPF Nao Cadastrado.");
+        return Id;
+    }
+
+    printarEscolha(escolha);
+
+    printf("\n");
+
+    return 0;
+}
+
+int printarEscolha(int Id)
+{
     printf("Nome: %s\n", Usuario[Id].Name);
     printf("Endereco: %s\n", Usuario[Id].Adress);
     printf("CPF: %s\n", Usuario[Id].CPF);
@@ -106,7 +142,7 @@ int PrintAll(int id)
 {
     for (int i = 0; i < id ; ++i)
     {
-        print(i);
+        printarEscolha(i);
     }
     return 0;
 }
@@ -115,4 +151,3 @@ int order()
 {
     return 0;
 }
-
