@@ -62,18 +62,23 @@ int Add (int Id)
 
 int Delete(int Id)
 {
-    for (int i = 0; i <= Id - 1; ++i)
-    {
-        if(strcmp(Usuario[i].CPF, Usuario[Id].CPF) == 0)
-        {
 
+    char cpfdigitado[30];
+
+    printf("Digite o cpf:");
+    fgets(cpfdigitado, 30, stdin);
+    cpfdigitado[strcspn(cpfdigitado,"\n")] = '\0';
+
+    for (int i = 0; i < Id; ++i)
+    {
+        if(strcmp(Usuario[i].CPF, cpfdigitado) == 0)
+        {
             printf("Usuario excluido com sucesso!.");
-            Usuario[Id].Name[] = "\0";
-            Usuario[Id].email[] = "\0";
-            Usuario[Id].Adress[] = "\0";
-            Usuario[Id].CPF[] = "\0";
-            Usuario[Id].Telefone[] = "\0";
-            return 0;
+            strcpy(Usuario[i].Name," ");
+            strcpy(Usuario[i].email," ");
+            strcpy(Usuario[i].Adress," ");
+            strcpy(Usuario[i].CPF," ");
+            strcpy(Usuario[i].Telefone," ");
         }
     }
 
@@ -121,11 +126,17 @@ int print(int Id)
 
 int printarEscolha(int Id)
 {
-    printf("Nome: %s\n", Usuario[Id].Name);
-    printf("Endereco: %s\n", Usuario[Id].Adress);
-    printf("CPF: %s\n", Usuario[Id].CPF);
-    printf("Telefone: %s\n", Usuario[Id].Telefone);
-    printf("E-mail: %s\n", Usuario[Id].email);
+    if(strcmp(Usuario[Id].CPF, " ") != 0)
+    {
+        printf("\n");
+        printf("Nome: %s\n", Usuario[Id].Name);
+        printf("Endereco: %s\n", Usuario[Id].Adress);
+        printf("CPF: %s\n", Usuario[Id].CPF);
+        printf("Telefone: %s\n", Usuario[Id].Telefone);
+        printf("E-mail: %s\n", Usuario[Id].email);
+        printf("\n");
+    }
+
 
     return 0;
 }
@@ -144,3 +155,4 @@ int order()
 
     return 0;
 }
+
