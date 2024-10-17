@@ -5,17 +5,11 @@
 int Id = 0;
 char opcao02[30];
 
-//Hoje é domingo pé de cachimbo
 
-//Maqueicou
-
-//ado ado quem tiver lendo é viado
-//birrento
 int main()
 {
     int opcao;
     int escolha;
-
 
     printf("\nEscolha uma das opcoes:\n");
     printf("=======================================================================");
@@ -23,7 +17,7 @@ int main()
     printf("=======================================================================\n");
     printf("Digite sua opcao: ");
     fgets(opcao02, 30, stdin);
-    sscanf(opcao02, "%d", &opcao);
+    scanf(opcao02, "%d", &opcao);
 
     switch (opcao)
     {
@@ -32,7 +26,7 @@ int main()
             break;
 
         case 2:
-            printf("Qual usuario deseja deletar ? \n");
+            printf("Qual usuario deseja deletar? \n");
             scanf("%d", &escolha);
             Delete(escolha);
             break;
@@ -56,8 +50,6 @@ int main()
             return 0;
 
         default:
-            //main();
-            //return 0;
             opcao = 0;
     }
     main();

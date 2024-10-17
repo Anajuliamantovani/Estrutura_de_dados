@@ -18,13 +18,9 @@ User Usuario [TAM];
 int Add (int Id)
 {
 
-
-
     printf("CPF:");
     fgets(Usuario[Id].CPF, 30, stdin);
     Usuario[Id].CPF[strcspn(Usuario[Id].CPF,"\n")] = '\0';
-
-
 
     if(Id != 0)
     {
@@ -40,7 +36,6 @@ int Add (int Id)
             }
         }
     }
-
 
     printf("Preencha as informacoes a seguir:\n");
 
@@ -72,13 +67,13 @@ int Delete(int Id)
         if(strcmp(Usuario[i].CPF, Usuario[Id].CPF) == 0)
         {
 
-           /* printf("CPF Excluido.");
+            printf("Usuario excluido com sucesso!.");
             Usuario[Id].Name[] = "\0";
             Usuario[Id].email[] = "\0";
             Usuario[Id].Adress[] = "\0";
             Usuario[Id].CPF[] = "\0";
             Usuario[Id].Telefone[] = "\0";
-            return 0;*/
+            return 0;
         }
     }
 
@@ -88,6 +83,7 @@ int Delete(int Id)
 
 int edit()
 {
+
     return 0;
 }
 
@@ -97,26 +93,22 @@ int print(int Id)
     printf("\n");
 
     int escolha = 1000;
-
     char cpfPesquisa[30];
 
     printf("CPF:");
     fgets(cpfPesquisa, 30, stdin);
     cpfPesquisa[strcspn(cpfPesquisa,"\n")] = '\0';
 
-
     for (int i = 0; i < Id; ++i)
     {
-
         if(strcmp(Usuario[i].CPF, cpfPesquisa) == 0)
         {
            escolha = i;
         }
-
     }
     if(escolha == 1000)
     {
-        printf("CPF Nao Cadastrado.");
+        printf("CPF nao cadastrado.");
         return Id;
     }
 
@@ -149,5 +141,6 @@ int PrintAll(int id)
 
 int order()
 {
+
     return 0;
 }
