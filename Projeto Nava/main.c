@@ -17,7 +17,7 @@ int main()
     printf("=======================================================================\n");
     printf("Digite sua opcao: ");
     fgets(opcao02, 30, stdin);
-    scanf(opcao02, "%d", &opcao);
+    sscanf(opcao02, "%d", &opcao);
 
     switch (opcao)
     {
@@ -27,8 +27,7 @@ int main()
 
         case 2:
             printf("Qual usuario deseja deletar? \n");
-            scanf("%d", &escolha);
-            Delete(escolha);
+            Delete(Id);
             break;
 
         case 3:
@@ -55,3 +54,4 @@ int main()
     main();
     return 0;
 }
+
