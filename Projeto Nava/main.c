@@ -23,24 +23,24 @@ int main()
     {
         case 1:
             Id = Add(Id);
-            break;
+        break;
 
         case 2:
             printf("Qual usuario deseja deletar? \n");
-            Delete(Id);
-            break;
+        Delete(Id);
+        break;
 
         case 3:
-
+            edit(Id);
             break;
 
         case 4:
             printf("Qual usuario deseja visualizar ? \n");
-            print(Id);
-            break;
+        print(Id);
+        break;
         case 5:
             PrintAll(Id);
-            break;
+        break;
 
         case 6:
             break;
@@ -54,4 +54,5 @@ int main()
     main();
     return 0;
 }
+
 
