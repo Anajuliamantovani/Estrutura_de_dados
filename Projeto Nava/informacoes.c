@@ -17,7 +17,6 @@ User Usuario [TAM];
 
 int Add (int Id)
 {
-
     printf("CPF:");
     fgets(Usuario[Id].CPF, 30, stdin);
     Usuario[Id].CPF[strcspn(Usuario[Id].CPF,"\n")] = '\0';
@@ -56,7 +55,6 @@ int Add (int Id)
     Usuario[Id].email[strcspn(Usuario[Id].email,"\n")] = '\0';
 
     Id++;
-    printf("\n%d EXEMPLO\n", Id);
     return Id;
 }
 
@@ -81,8 +79,6 @@ int Delete(int Id)
             strcpy(Usuario[i].Telefone," ");
         }
     }
-
-
     return 0;
 }
 
@@ -97,67 +93,57 @@ int edit(int Id)
     printf("Digite o cpf:");
     fgets(cpfdigitado, 30, stdin);
     cpfdigitado[strcspn(cpfdigitado,"\n")] = '\0';
-    
+
     for (int i = 0; i < Id; ++i)
     {
         if(strcmp(Usuario[i].CPF, cpfdigitado) == 0)
         {
             while (strcmp(string, "\n") != 0)
             {
-
                 boleano = 1;
-                printf("\n\nusuario encontrado \n");
+                printf("\n\nUsuario encontrado!\n");
+                printf("O que deseja alterar?\n");
                 printf("1 - Nome: %s\n", Usuario[i].Name);
                 printf("2 - Endereco: %s\n", Usuario[i].Adress);
                 printf("3 - CPF: %s\n", Usuario[i].CPF);
                 printf("4 - Telefone: %s\n", Usuario[i].Telefone);
                 printf("5 - E-mail: %s\n", Usuario[i].email);
-                //printf("6 - Sair\n");
-
                 printf("Pressione 'Enter' Para sair\n\n");
 
                 fgets(string, 30, stdin);
-                //string[strcspn(Usuario[i].Name,"\n")] = '\0';
                 opcao = string[0];
-
-                //scanf("%s",&opcao);
-                //sscanf(opcao, "%d", &escolha);
 
                 switch (opcao)
                 {
                     case '1':
                         printf("Novo nome: ");
-                    fgets(Usuario[i].Name, 80, stdin);
-                    Usuario[i].Name[strcspn(Usuario[i].Name,"\n")] = '\0';
-                    break;
+                        fgets(Usuario[i].Name, 80, stdin);
+                        Usuario[i].Name[strcspn(Usuario[i].Name,"\n")] = '\0';
+                        break;
 
                     case '2':
                         printf("Novo Endereco: ");
-                    fgets(Usuario[i].Adress, 80, stdin);
-                    Usuario[i].Adress[strcspn(Usuario[i].Adress,"\n")] = '\0';
-                    break;
+                        fgets(Usuario[i].Adress, 80, stdin);
+                        Usuario[i].Adress[strcspn(Usuario[i].Adress,"\n")] = '\0';
+                        break;
 
                     case '3':
                         printf("Novo CPF: ");
-                    fgets(Usuario[i].CPF, 80, stdin);
-                    Usuario[i].CPF[strcspn(Usuario[i].CPF,"\n")] = '\0';
-                    break;
+                        fgets(Usuario[i].CPF, 80, stdin);
+                        Usuario[i].CPF[strcspn(Usuario[i].CPF,"\n")] = '\0';
+                        break;
 
                     case '4':
                         printf("Novo Telefone: ");
-                    fgets(Usuario[i].Telefone, 80, stdin);
-                    Usuario[i].Telefone[strcspn(Usuario[i].Telefone,"\n")] = '\0';
-                    break;
+                        fgets(Usuario[i].Telefone, 80, stdin);
+                        Usuario[i].Telefone[strcspn(Usuario[i].Telefone,"\n")] = '\0';
+                        break;
 
                     case '5':
                         printf("Novo E-mail: ");
-                    fgets(Usuario[i].email, 80, stdin);
-                    Usuario[i].email[strcspn(Usuario[i].email,"\n")] = '\0';
-                    break;
-
-                   // case '6':
-                       // return 0;
-
+                        fgets(Usuario[i].email, 80, stdin);
+                        Usuario[i].email[strcspn(Usuario[i].email,"\n")] = '\0';
+                        break;
                 }
 
                 if(strcmp(string, "\n") == 0)
@@ -192,7 +178,7 @@ int print(int Id)
     {
         if(strcmp(Usuario[i].CPF, cpfPesquisa) == 0)
         {
-           escolha = i;
+            escolha = i;
         }
     }
     if(escolha == 1000)
@@ -200,9 +186,7 @@ int print(int Id)
         printf("CPF nao cadastrado.");
         return Id;
     }
-
     printarEscolha(escolha);
-
     printf("\n");
 
     return 0;
@@ -220,8 +204,6 @@ int printarEscolha(int Id)
         printf("E-mail: %s\n", Usuario[Id].email);
         printf("\n");
     }
-
-
     return 0;
 }
 
@@ -234,9 +216,38 @@ int PrintAll(int id)
     return 0;
 }
 
-int order()
+int Order(int Id)
 {
+    User temporario; //variavel criada para armazenar os dados dos usuarios temporariamente
 
+    for (int i = 0; i < Id - 1; ++i)  //esse loopinho vai passar por cada andar do predio.
+                                     // (i < Id - 1) essa condição garante que o i nao ultrapasse limite do que deve comparar.
+    {
+        for (int j = 0; j < Id - 1; j++) // loopinho compara cada andar do predio
+        {
+            if(strcmp(Usuario[j].Name, Usuario[j + 1].Name) > 0) //se o estrupicio comparar o j e j+1 for maior q 0 quer dizer que precisam trocar de lugar
+            {
+                //troca de posição
+                temporario = Usuario[j]; //usuario atual esta temporariamente na variavel temporario
+                Usuario[j] = Usuario [j+1];//o usuario da posicao j+1 vai pra j e faz a troca de posicao
+                Usuario[j+1] = temporario;//e o usuario que tava no temporario vai pra j+1 que foi liberado na linha anterior
+            }
+        }
+    }
     return 0;
 }
 
+int DadosOrdenados(int Id)
+{
+    for (int i = 0; i < Id; i++)
+    {
+        printf("\n");
+        printf("Nome: %s\n", Usuario[i].Name);
+        printf("Endereco: %s\n", Usuario[i].Adress);
+        printf("CPF: %s\n", Usuario[i].CPF);
+        printf("Telefone: %s\n", Usuario[i].Telefone);
+        printf("E-mail: %s\n", Usuario[i].email);
+        printf("\n");
+    }
+    return 0;
+}
